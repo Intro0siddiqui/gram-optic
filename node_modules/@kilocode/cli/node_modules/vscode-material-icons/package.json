@@ -1,0 +1,63 @@
+{
+  "name": "vscode-material-icons",
+  "version": "0.1.1",
+  "license": "MIT",
+  "description": "VSCode Material Icons wrapper for applications",
+  "keywords": [
+    "icons",
+    "material-icons",
+    "file-icons",
+    "folder-icons",
+    "vscode"
+  ],
+  "author": "Matěj Chalk <matejchalk@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/matejchalk/vscode-material-icons.git"
+  },
+  "homepage": "https://github.com/matejchalk/vscode-material-icons#readme",
+  "bugs": {
+    "url": "https://github.com/matejchalk/vscode-material-icons/issues"
+  },
+  "type": "module",
+  "files": [
+    "dist/",
+    "generated/"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "fetch-icons": "node scripts/fetch-icons.js",
+    "release": "release-it",
+    "app:serve": "tsx watch --clear-screen=false src/app/main.ts",
+    "app:build": "tsup --config tsup.config.app.ts",
+    "app:run": "node dist-app/main.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/fs-extra": "^11.0.4",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "fs-extra": "^11.2.0",
+    "match-sorter": "^6.3.4",
+    "release-it": "^17.0.3",
+    "simple-git": "^3.22.0",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  }
+}
